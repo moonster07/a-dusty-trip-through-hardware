@@ -1,0 +1,234 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "14.0 (devel)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000000000079ACC0 .scope module, "datapath_tb" "datapath_tb" 2 3;
+ .timescale -9 -12;
+v000000000080C1E0_0 .var "clk", 0 0;
+v000000000080B1A0_0 .var "external_data", 3 0;
+v000000000080BE20_0 .var "op", 1 0;
+v000000000080BC40_0 .var "read_addr_A", 1 0;
+v000000000080C640_0 .var "read_addr_B", 1 0;
+v000000000080AAC0_0 .net "result", 3 0, L_00000000007BB180;  1 drivers
+v000000000080C280_0 .var "write_addr", 1 0;
+v000000000080B380_0 .var "write_en", 0 0;
+v000000000080C0A0_0 .var "write_select", 0 0;
+S_00000000007ABD90 .scope module, "uut" "datapath" 2 16, 3 1 0, S_000000000079ACC0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 2 "read_addr_A";
+    .port_info 2 /INPUT 2 "read_addr_B";
+    .port_info 3 /INPUT 2 "write_addr";
+    .port_info 4 /INPUT 1 "write_en";
+    .port_info 5 /INPUT 2 "op";
+    .port_info 6 /INPUT 4 "external_data";
+    .port_info 7 /INPUT 1 "write_select";
+    .port_info 8 /OUTPUT 4 "result";
+L_00000000007BB180 .functor BUFZ 4, v000000000079E710_0, C4<0000>, C4<0000>, C4<0000>;
+v000000000079F430_0 .net "alu_result", 3 0, v000000000079E710_0;  1 drivers
+v000000000079E670_0 .net "clk", 0 0, v000000000080C1E0_0;  1 drivers
+v000000000079F110_0 .net "data_A", 3 0, L_00000000007BAAF0;  1 drivers
+v000000000079E990_0 .net "data_B", 3 0, L_00000000007BB110;  1 drivers
+v000000000079EE90_0 .net "external_data", 3 0, v000000000080B1A0_0;  1 drivers
+v000000000079F070_0 .net "op", 1 0, v000000000080BE20_0;  1 drivers
+v000000000080C500_0 .net "read_addr_A", 1 0, v000000000080BC40_0;  1 drivers
+v000000000080B100_0 .net "read_addr_B", 1 0, v000000000080C640_0;  1 drivers
+v000000000080BD80_0 .net "result", 3 0, L_00000000007BB180;  alias, 1 drivers
+v000000000080BA60_0 .net "write_addr", 1 0, v000000000080C280_0;  1 drivers
+v000000000080AB60_0 .net "write_data", 3 0, L_000000000080B880;  1 drivers
+v000000000080C5A0_0 .net "write_en", 0 0, v000000000080B380_0;  1 drivers
+v000000000080B240_0 .net "write_select", 0 0, v000000000080C0A0_0;  1 drivers
+L_000000000080B880 .functor MUXZ 4, v000000000080B1A0_0, v000000000079E710_0, v000000000080C0A0_0, C4<>;
+S_00000000007ABF20 .scope module, "ALU" "alu" 3 39, 4 1 0, S_00000000007ABD90;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "A";
+    .port_info 1 /INPUT 4 "B";
+    .port_info 2 /INPUT 2 "op";
+    .port_info 3 /OUTPUT 4 "result";
+v000000000079F250_0 .net "A", 3 0, L_00000000007BAAF0;  alias, 1 drivers
+v000000000079F2F0_0 .net "B", 3 0, L_00000000007BB110;  alias, 1 drivers
+v000000000079ECB0_0 .net "op", 1 0, v000000000080BE20_0;  alias, 1 drivers
+v000000000079E710_0 .var "result", 3 0;
+E_000000000079D040 .event anyedge, v000000000079ECB0_0, v000000000079F250_0, v000000000079F2F0_0;
+S_00000000007AC0B0 .scope module, "RF" "register_file" 3 25, 5 1 0, S_00000000007ABD90;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 2 "read_addr_A";
+    .port_info 2 /INPUT 2 "read_addr_B";
+    .port_info 3 /INPUT 2 "write_addr";
+    .port_info 4 /INPUT 4 "write_data";
+    .port_info 5 /INPUT 1 "write_en";
+    .port_info 6 /OUTPUT 4 "read_data_A";
+    .port_info 7 /OUTPUT 4 "read_data_B";
+L_00000000007BAAF0 .functor BUFZ 4, L_000000000080BBA0, C4<0000>, C4<0000>, C4<0000>;
+L_00000000007BB110 .functor BUFZ 4, L_000000000080ACA0, C4<0000>, C4<0000>, C4<0000>;
+v000000000079F4D0_0 .net *"_ivl_0", 3 0, L_000000000080BBA0;  1 drivers
+v000000000079E850_0 .net *"_ivl_10", 3 0, L_000000000080C3C0;  1 drivers
+L_0000000000EB00D0 .functor BUFT 1, C4<00>, C4<0>, C4<0>, C4<0>;
+v000000000079EA30_0 .net *"_ivl_13", 1 0, L_0000000000EB00D0;  1 drivers
+v000000000079E7B0_0 .net *"_ivl_2", 3 0, L_000000000080AC00;  1 drivers
+L_0000000000EB0088 .functor BUFT 1, C4<00>, C4<0>, C4<0>, C4<0>;
+v000000000079EF30_0 .net *"_ivl_5", 1 0, L_0000000000EB0088;  1 drivers
+v000000000079E8F0_0 .net *"_ivl_8", 3 0, L_000000000080ACA0;  1 drivers
+v000000000079F390_0 .net "clk", 0 0, v000000000080C1E0_0;  alias, 1 drivers
+v000000000079EAD0_0 .net "read_addr_A", 1 0, v000000000080BC40_0;  alias, 1 drivers
+v000000000079EFD0_0 .net "read_addr_B", 1 0, v000000000080C640_0;  alias, 1 drivers
+v000000000079EB70_0 .net "read_data_A", 3 0, L_00000000007BAAF0;  alias, 1 drivers
+v000000000079E5D0_0 .net "read_data_B", 3 0, L_00000000007BB110;  alias, 1 drivers
+v000000000079ED50 .array "registers", 3 0, 3 0;
+v000000000079EC10_0 .net "write_addr", 1 0, v000000000080C280_0;  alias, 1 drivers
+v000000000079F1B0_0 .net "write_data", 3 0, L_000000000080B880;  alias, 1 drivers
+v000000000079EDF0_0 .net "write_en", 0 0, v000000000080B380_0;  alias, 1 drivers
+E_000000000079D100 .event posedge, v000000000079F390_0;
+L_000000000080BBA0 .array/port v000000000079ED50, L_000000000080AC00;
+L_000000000080AC00 .concat [ 2 2 0 0], v000000000080BC40_0, L_0000000000EB0088;
+L_000000000080ACA0 .array/port v000000000079ED50, L_000000000080C3C0;
+L_000000000080C3C0 .concat [ 2 2 0 0], v000000000080C640_0, L_0000000000EB00D0;
+    .scope S_00000000007AC0B0;
+T_0 ;
+    %wait E_000000000079D100;
+    %load/vec4 v000000000079EDF0_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.0, 8;
+    %load/vec4 v000000000079F1B0_0;
+    %load/vec4 v000000000079EC10_0;
+    %pad/u 4;
+    %ix/vec4 3;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v000000000079ED50, 0, 4;
+T_0.0 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_00000000007ABF20;
+T_1 ;
+    %wait E_000000000079D040;
+    %load/vec4 v000000000079ECB0_0;
+    %dup/vec4;
+    %pushi/vec4 0, 0, 2;
+    %cmp/e;
+    %jmp/1 T_1.0, 6;
+    %dup/vec4;
+    %pushi/vec4 1, 0, 2;
+    %cmp/e;
+    %jmp/1 T_1.1, 6;
+    %dup/vec4;
+    %pushi/vec4 2, 0, 2;
+    %cmp/e;
+    %jmp/1 T_1.2, 6;
+    %dup/vec4;
+    %pushi/vec4 3, 0, 2;
+    %cmp/e;
+    %jmp/1 T_1.3, 6;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000000000079E710_0, 0, 4;
+    %jmp T_1.5;
+T_1.0 ;
+    %load/vec4 v000000000079F250_0;
+    %load/vec4 v000000000079F2F0_0;
+    %add;
+    %store/vec4 v000000000079E710_0, 0, 4;
+    %jmp T_1.5;
+T_1.1 ;
+    %load/vec4 v000000000079F250_0;
+    %load/vec4 v000000000079F2F0_0;
+    %sub;
+    %store/vec4 v000000000079E710_0, 0, 4;
+    %jmp T_1.5;
+T_1.2 ;
+    %load/vec4 v000000000079F250_0;
+    %load/vec4 v000000000079F2F0_0;
+    %and;
+    %store/vec4 v000000000079E710_0, 0, 4;
+    %jmp T_1.5;
+T_1.3 ;
+    %load/vec4 v000000000079F250_0;
+    %load/vec4 v000000000079F2F0_0;
+    %or;
+    %store/vec4 v000000000079E710_0, 0, 4;
+    %jmp T_1.5;
+T_1.5 ;
+    %pop/vec4 1;
+    %jmp T_1;
+    .thread T_1, $push;
+    .scope S_000000000079ACC0;
+T_2 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000080C1E0_0, 0, 1;
+T_2.0 ;
+    %delay 5000, 0;
+    %load/vec4 v000000000080C1E0_0;
+    %inv;
+    %store/vec4 v000000000080C1E0_0, 0, 1;
+    %jmp T_2.0;
+T_2.1 ;
+    %end;
+    .thread T_2;
+    .scope S_000000000079ACC0;
+T_3 ;
+    %vpi_call 2 34 "$dumpfile", "datapath.vcd" {0 0 0};
+    %vpi_call 2 35 "$dumpvars", 32'sb00000000000000000000000000000000, S_000000000079ACC0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000080B380_0, 0, 1;
+    %pushi/vec4 0, 0, 2;
+    %store/vec4 v000000000080C280_0, 0, 2;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000000000080B1A0_0, 0, 4;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000080C0A0_0, 0, 1;
+    %pushi/vec4 0, 0, 2;
+    %store/vec4 v000000000080BC40_0, 0, 2;
+    %pushi/vec4 0, 0, 2;
+    %store/vec4 v000000000080C640_0, 0, 2;
+    %pushi/vec4 0, 0, 2;
+    %store/vec4 v000000000080BE20_0, 0, 2;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000080B380_0, 0, 1;
+    %pushi/vec4 1, 0, 2;
+    %store/vec4 v000000000080C280_0, 0, 2;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v000000000080B1A0_0, 0, 4;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000080C0A0_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 2, 0, 2;
+    %store/vec4 v000000000080C280_0, 0, 2;
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v000000000080B1A0_0, 0, 4;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000080C0A0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000080B380_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000080B380_0, 0, 1;
+    %pushi/vec4 1, 0, 2;
+    %store/vec4 v000000000080BC40_0, 0, 2;
+    %pushi/vec4 2, 0, 2;
+    %store/vec4 v000000000080C640_0, 0, 2;
+    %pushi/vec4 0, 0, 2;
+    %store/vec4 v000000000080BE20_0, 0, 2;
+    %delay 10000, 0;
+    %pushi/vec4 3, 0, 2;
+    %store/vec4 v000000000080C280_0, 0, 2;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000080C0A0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000080B380_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 71 "$display", "Result = %b", v000000000080AAC0_0 {0 0 0};
+    %vpi_call 2 72 "$finish" {0 0 0};
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 6;
+    "N/A";
+    "<interactive>";
+    "datapath_tb.v";
+    "datapath.v";
+    "alu.v";
+    "register_file.v";
