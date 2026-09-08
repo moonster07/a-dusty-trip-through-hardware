@@ -1,0 +1,57 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "14.0 (devel)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_00000000006D2B30 .scope module, "instruction_decoder_tb" "instruction_decoder_tb" 2 3;
+ .timescale -9 -12;
+v00000000006D2CC0_0 .var "instruction", 7 0;
+v00000000006D2D60_0 .net "opcode", 1 0, L_0000000000730460;  1 drivers
+v00000000006E8550_0 .net "rd", 1 0, L_0000000000730500;  1 drivers
+v0000000000730140_0 .net "rs1", 1 0, L_00000000007301E0;  1 drivers
+v0000000000730000_0 .net "rs2", 1 0, L_0000000000730280;  1 drivers
+S_00000000006E83C0 .scope module, "uut" "instruction_decoder" 2 12, 3 1 0, S_00000000006D2B30;
+ .timescale 0 0;
+    .port_info 0 /INPUT 8 "instruction";
+    .port_info 1 /OUTPUT 2 "opcode";
+    .port_info 2 /OUTPUT 2 "rd";
+    .port_info 3 /OUTPUT 2 "rs1";
+    .port_info 4 /OUTPUT 2 "rs2";
+v00000000006D2A00_0 .net "instruction", 7 0, v00000000006D2CC0_0;  1 drivers
+v00000000006ACD10_0 .net "opcode", 1 0, L_0000000000730460;  alias, 1 drivers
+v00000000006D27B0_0 .net "rd", 1 0, L_0000000000730500;  alias, 1 drivers
+v00000000006D25E0_0 .net "rs1", 1 0, L_00000000007301E0;  alias, 1 drivers
+v00000000006D2410_0 .net "rs2", 1 0, L_0000000000730280;  alias, 1 drivers
+L_0000000000730460 .part v00000000006D2CC0_0, 6, 2;
+L_0000000000730500 .part v00000000006D2CC0_0, 4, 2;
+L_00000000007301E0 .part v00000000006D2CC0_0, 2, 2;
+L_0000000000730280 .part v00000000006D2CC0_0, 0, 2;
+    .scope S_00000000006D2B30;
+T_0 ;
+    %vpi_call 2 23 "$dumpfile", "instruction_decoder.vcd" {0 0 0};
+    %vpi_call 2 24 "$dumpvars", 32'sb00000000000000000000000000000000, S_00000000006D2B30 {0 0 0};
+    %pushi/vec4 54, 0, 8;
+    %store/vec4 v00000000006D2CC0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 109, 0, 8;
+    %store/vec4 v00000000006D2CC0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 155, 0, 8;
+    %store/vec4 v00000000006D2CC0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 198, 0, 8;
+    %store/vec4 v00000000006D2CC0_0, 0, 8;
+    %delay 10000, 0;
+    %vpi_call 2 38 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "instruction_decoder_tb.v";
+    "instruction_decoder.v";
